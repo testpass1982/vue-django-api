@@ -11,14 +11,10 @@ var app = new Vue({
     data: {
         products: [],
         photos: [],
-        baskets: [],
+        basket: {},
         loading: false,
         message: 'HELLO VUE',
         currentProduct: {},
-        newProduct: {
-            'product_name': null,
-            'product_description': null,
-        },
         // http: {
         //     root: '/root',
         //     headers: {
@@ -42,9 +38,9 @@ var app = new Vue({
                     console.log(err);
                 })
         },
-        getProduct: function() {
+        getProduct: function(id) {
             this.loading = true;
-            this.$http.get('api/products/${id}')
+            this.$http.get(`api/products/${id}`)
             .then( response => {
                 this.currentProduct = response.body;
                 this.loading = false;
@@ -53,6 +49,23 @@ var app = new Vue({
                 this.loading = false;
                 console.log(err);
             })
+        },
+        addToBasket: function(product) {
+            this.loading = true;
+            if (this.basket.basket_id) {
+                product.basket_id = this.basket.basket_id;
+            } else {
+                this.$http.post('/api/baskets/')
+                .then( response => {
+                    this.basket = response.body;
+                    this.loading = false;
+                    product.basket_id = this.basket.basket_id;
+                })
+                .catch( err => {
+                    this.loading = false;
+                    console.log(err);
+            })
+            }
         }
     }
 });

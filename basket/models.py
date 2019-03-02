@@ -13,12 +13,12 @@ class Product(models.Model):
     product_description = models.TextField(u'Описание')
     product_price = models.IntegerField(u'Цена')
     product_photo = models.ImageField(u'Фото', upload_to="upload")
-    basket_id = models.ForeignKey(Basket, null=True, 
+    basket_id = models.ForeignKey(Basket, null=True, blank=True,
                                   default=None, on_delete=models.SET_NULL)
 
 class Photo(models.Model):
     """base class for additional photos for product"""
-    product = models.ForeignKey(Product, null=True,
+    product = models.ForeignKey(Product, null=True, blank=True,
                                 default=None, on_delete=models.SET_NULL)
     photo = models.ImageField(u'Файл', upload_to="upload")
 

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {% comment %} <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> {% endcomment %}
     <link rel="stylesheet" href="{% sass_src 'scss/compiled.scss' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static "favicon.ico" %}">
 </head>
 <body>
 {% include 'basket/includes/header.html' %}
@@ -19,12 +20,12 @@
 
 {% include 'basket/includes/footer.html' %}
 
+<script src="{% static 'js/jquery-3.3.1.js' %}"></script>
 {% comment %} vue js {% endcomment %}
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script src="{% static 'js/vue.js' %}"></script>
 {% comment %} vue ajax library {% endcomment %}
 <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5></script>
 
-<script src="{% static 'js/jquery-3.3.1.js' %}"></script>
 <script src="{% static 'js/bootstrap.js' %}"></script>
 <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>

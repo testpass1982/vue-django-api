@@ -1,1 +1,8 @@
 @import '_variables.scss';
+
+.header-text {
+    color: $primary_red;
+    &:hover {
+        color: $primary_blue;
+    }
+}

@@ -1,0 +1,48 @@
+{% extends 'basket/base.html' %}
+
+{% block content %}
+<div id="app">
+    <div class="container">
+        <h4>
+            This is my vue-django-shop
+        </h4>
+        <p>${message}</p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, magnam.
+        </p>
+        <div class="row">
+            <div class="col-xl-10">List of products
+             <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="product in products">
+                <th scope="row">${product.product_id}</th>
+                <td>${product.product_name}</td>
+                <td>
+                    <img :src="product.product_photo" class="w-50" alt="photo">
+                </td>
+                <td><button v-on:click="getProduct(product.product_id)"
+                class="btn btn-warning" data-toggle="modal" 
+                data-target="#id_modal_details">Details</button>
+                <button class="btn btn-info">Buy</button>
+                </td>
+              </tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="col-xl-2">Col2
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus suscipit temporibus dolores. Tempore ullam reprehenderit in facilis eos, quam repellendus eligendi reiciendis natus sit saepe itaque aspernatur, obcaecati necessitatibus tempora.
+            
+            </div>
+        </div>
+    </div>
+    {% include 'basket/includes/details.html' %}
+</div>
+{% endblock %}

@@ -18,7 +18,6 @@ class Basket(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(u'Количество товаров')
-    # total_price = models.PositiveIntegerField(u'Стоимость всего')
     #TODO: add user FK to basket
 
 

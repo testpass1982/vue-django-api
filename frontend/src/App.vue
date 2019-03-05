@@ -29,7 +29,9 @@
         </div>
       </div>
     </div>
+        <router-link to="/api/places">Place API</router-link> ::
   </div>
+    <router-view></router-view>
 </template>
 
 <script>
@@ -46,8 +48,29 @@
           {title: 'three'},
           {title: 'four'},
           {title: 'five'},
-        ]
+        ],
+        products: [],
+        photos: [],
+        loading: false,
+        currentProduct: {},
       }
+    },
+    mounted: function () {
+    this.getProducts();
+    },
+    methods: {
+        getProducts: function () {
+            this.loading = true;
+            this.$http.get('/api/products/')
+                .then( response => {
+                    this.products = response.body;
+                    this.loading = false;
+                })
+                .catch((err) => {
+                    this.loading = false;
+                    console.log(err);
+                })
+        }
     }
   }
 </script>
